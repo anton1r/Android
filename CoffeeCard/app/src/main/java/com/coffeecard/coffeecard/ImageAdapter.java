@@ -33,24 +33,25 @@ public class ImageAdapter extends BaseAdapter {
     {
         int visits = 3;
 
-        Drawable purchasedCoffee = mContext.getResources().getDrawable(R.drawable.coffeecup);
-        Drawable notPurchasedCoffee = mContext.getResources().getDrawable(R.drawable.xbutton);
         for (int i = 0; i < visits; i++)
         {
             mThumbIds.add(writeOnDrawable(R.drawable.coffeecup, Integer.toString(i)));
-            //mThumbIds.add(purchasedCoffee);
         }
-        for(int i=visits; i < 10; i++)
+        for(int i=visits; i < 9; i++)
         {
-            mThumbIds.add(writeOnDrawable(R.drawable.xbutton, Integer.toString(i)));
-            //mThumbIds.add(notPurchasedCoffee);
+            mThumbIds.add(mContext.getResources().getDrawable(R.drawable.coffeecup));
         }
     }
 
     private LayerDrawable writeOnDrawable(int drawableId, String text){
 
-        Bitmap canvasBitmap = Bitmap.createBitmap(250, 250,
-                Bitmap.Config.ARGB_8888);
+        Drawable d = mContext.getResources().getDrawable(drawableId);
+
+        final int IMAGE_WIDTH = d.getIntrinsicWidth();
+        final int IMAGE_HEIGHT = d.getIntrinsicHeight();
+
+        Bitmap canvasBitmap = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT,
+                Bitmap.Config.ARGB_4444);
         // Create a canvas, that will draw on to canvasBitmap.
         Canvas imageCanvas = new Canvas(canvasBitmap);
 
@@ -58,14 +59,16 @@ public class ImageAdapter extends BaseAdapter {
         Paint imagePaint = new Paint();
         imagePaint.setTextAlign(Paint.Align.CENTER);
         imagePaint.setColor(Color.BLUE);
-        imagePaint.setTextSize(16f);
+        imagePaint.setTextSize(200);
 
         // Draw the image to our canvas
-        Drawable d = mContext.getResources().getDrawable(drawableId);
         d.draw(imageCanvas);
 
         // Draw the text on top of our image
-        imageCanvas.drawText(text, 0, 0, imagePaint);
+        imageCanvas.drawText(text,
+                IMAGE_WIDTH / 2,
+                IMAGE_HEIGHT / 2,
+                imagePaint);
 
         // Combine background and text to a LayerDrawable
         return new LayerDrawable(
