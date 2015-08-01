@@ -1,9 +1,7 @@
 package com.coffeecard.coffeecard;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,31 +17,30 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageAdapter extends BaseAdapter {
+public class StampAdapter extends BaseAdapter {
     private Context mContext;
-    private List<Drawable> mThumbIds = new ArrayList<>();
+    private List<Drawable> stampList = new ArrayList<>();
 
-    public ImageAdapter(Context c) {
+    public StampAdapter(Context c) {
         mContext = c;
-        buildImages();
-
+        buildStampList();
     }
 
-    private void buildImages()
+    private void buildStampList()
     {
         int visits = 3;
 
         for (int i = 0; i < visits; i++)
         {
-            mThumbIds.add(writeOnDrawable(R.drawable.coffeecup, Integer.toString(i)));
+            stampList.add(validateStamp(R.drawable.coffeecup, Integer.toString(i)));
         }
         for(int i=visits; i < 9; i++)
         {
-            mThumbIds.add(mContext.getResources().getDrawable(R.drawable.coffeecup));
+            stampList.add(mContext.getResources().getDrawable(R.drawable.coffeecup));
         }
     }
 
-    private LayerDrawable writeOnDrawable(int drawableId, String text){
+    private LayerDrawable validateStamp(int drawableId, String text){
 
         Drawable d = mContext.getResources().getDrawable(drawableId);
 
@@ -76,7 +73,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return mThumbIds.size();
+        return stampList.size();
     }
 
     public Object getItem(int position) {
@@ -100,7 +97,7 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageDrawable(mThumbIds.get(position));
+        imageView.setImageDrawable(stampList.get(position));
         return imageView;
     }
 
