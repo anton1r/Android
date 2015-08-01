@@ -26,8 +26,7 @@ public class StampAdapter extends BaseAdapter {
         buildStampList();
     }
 
-    private void buildStampList()
-    {
+    private void buildStampList(){
         int visits = 3;
 
         for (int i = 0; i < visits; i++)
@@ -100,10 +99,4 @@ public class StampAdapter extends BaseAdapter {
         imageView.setImageDrawable(stampList.get(position));
         return imageView;
     }
-
-
-
-
-
-
 }

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CoffeeCard</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_info_screen">InfoScreen</string>
+    <string name="InfoName">The Coffee Hut</string>
+    <string name="InfoPhone">0131 331 1234</string>
+    <string name="InfoEmail">info@thecoffeehut.com</string>
+    <string name="InfoTwitter">twitter.com/tch</string>
+    <string name="InfoAddress">1 Princess Street \n Edinburgh \n EH1 1AA</string>
+</resources>
