@@ -1,4 +1,4 @@
-package com.coffeecard.coffeecard;
+package com.coffeecard.coffeecard.Adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.coffeecard.coffeecard.R;
 
 import java.util.ArrayList;
 import java.util.List;
